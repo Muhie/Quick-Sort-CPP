@@ -41,7 +41,7 @@ void quick_sort(int quick_array[], int index_low, int index_high){
 int main(int argc, char** argv)
 {
     unsigned int n = 0;
-    cout << "Hello this is a test of the bubble sort in c++! please enter the size of the unordered array: ";
+    cout << "Hello this is a test of the quick sort in c++! please enter the size of the unordered array: ";
     cin >> n;
     cout << "You have chosen for the array to be: " << n << "\n";
     int* quick_array = new int[n];

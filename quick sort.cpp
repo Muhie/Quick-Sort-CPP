@@ -2,15 +2,15 @@
 using namespace std; // this means that you do not need to start the line with std
 
 void quick_sort(int quick_array[], int index_low, int index_high){
-    int temp_swap = 0;
-    int temp_low = 0;
-    int temp_high = 0;
+    int temp_swap;
+    int temp_low;
+    int temp_high;
     temp_low = index_low;
     temp_high = index_high;
     int pivot = quick_array[(index_low+index_high)/2];
     while(temp_low <= temp_high){
         while (quick_array[temp_low] < pivot and temp_low < index_high){
-        temp_low = temp_low + 1;
+            temp_low = temp_low + 1;
         }
         while (pivot < quick_array[temp_high] and temp_high > index_high){
             temp_high = temp_high - 1;
@@ -19,15 +19,16 @@ void quick_sort(int quick_array[], int index_low, int index_high){
                 temp_swap = quick_array[temp_low];
                 quick_array[temp_low] = quick_array[temp_high];
                 quick_array[temp_high] = temp_swap;
+                temp_low = temp_low + 1;
+                temp_high = temp_high - 1;
+
                 
             }
-        temp_low = temp_low + 1;
-        temp_high = temp_high - 1;
     }
-    if (index_low < temp_high){
+    if (index_low <= temp_high){
         quick_sort(quick_array,index_low, temp_high);
     }
-    else if (temp_low < index_high){
+    else if (temp_low <= index_high){
         quick_sort(quick_array, temp_low, index_high);
     }
             
@@ -50,7 +51,7 @@ int main(int argc, char** argv)
         cin >> x;
         quick_array[i] = x;
     }
-    quick_sort(quick_array, n/2, (n/2)+n);//getting all user inputs! quick sort starts here!
+    quick_sort(quick_array, n/4, n/4+n/2);//getting all user inputs! quick sort starts here!
 
 
 
@@ -66,4 +67,6 @@ int main(int argc, char** argv)
     }
 
 }
+
+
 

@@ -14,13 +14,9 @@ void quick_sort(int quick_array[], int index_low, int index_high){
     int pivot = quick_array[index_low];
     bool finished = 0;
     while(finished == 0){
-        //WHILE low_mark <= high_mark AND items[low_mark] <= pivot_value
-            //low_mark = low_mark + 1  // Increment low_mark
         while (temp_low <= temp_high and quick_array[temp_low] <= pivot){
             temp_low = temp_low + 1;
         }
-        //WHILE low_mark <= high_mark and items[high_mark] >= pivot_value
-            //high_mark = high_mark - 1  // Decrement high_mark
         while (temp_low <= temp_high and quick_array[temp_high] >= pivot){
             temp_high = temp_high - 1;
         }

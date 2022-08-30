@@ -1,3 +1,4 @@
+
 #include <iostream>
 using namespace std; // this means that you do not need to start the line with std
 
@@ -13,34 +14,36 @@ void quick_sort(int quick_array[], int index_low, int index_high){
     int pivot = quick_array[index_low];
     bool finished = 0;
     while(finished == 0){
-        while (quick_array[temp_low] < pivot and temp_low < index_high){
+        //WHILE low_mark <= high_mark AND items[low_mark] <= pivot_value
+            //low_mark = low_mark + 1  // Increment low_mark
+        while (temp_low <= temp_high and quick_array[temp_low] <= pivot){
             temp_low = temp_low + 1;
         }
-        while (pivot < quick_array[temp_high] and temp_high > index_low){
+        //WHILE low_mark <= high_mark and items[high_mark] >= pivot_value
+            //high_mark = high_mark - 1  // Decrement high_mark
+        while (temp_low <= temp_high and quick_array[temp_high] >= pivot){
             temp_high = temp_high - 1;
         }
-            if (temp_low < temp_high){
-                temp_swap = quick_array[temp_low];
-                quick_array[temp_low] = quick_array[temp_high];
-                quick_array[temp_high] = temp_swap;
-            }else{
-                finished = 1;
-                
-            }
+    
+        if (temp_low < temp_high){
+            temp_swap = quick_array[temp_low];
+            quick_array[temp_low] = quick_array[temp_high];
+            quick_array[temp_high] = temp_swap;
+        }
+        else{
+            finished = 1;
+            
+        }
         
-        temp_swap = quick_array[index_low];
-        quick_array[index_low] = quick_array[temp_high];
-        quick_array[temp_high] = temp_swap;
         
 
 
     }
-    if (index_low < temp_high){
-        quick_sort(quick_array,index_low, temp_high - 1);
-    }
-    else if (temp_low < index_high){
-        quick_sort(quick_array, temp_high + 1, index_high);
-    }
+    temp_swap = quick_array[index_low];
+    quick_array[index_low] = quick_array[temp_high];
+    quick_array[temp_high] = temp_swap;
+    quick_sort(quick_array,index_low, temp_high - 1);
+    quick_sort(quick_array, temp_high + 1, index_high);
             
             
             
@@ -77,6 +80,8 @@ int main(int argc, char** argv)
     }
 
 }
+
+
 
 
 
